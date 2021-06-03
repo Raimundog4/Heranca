@@ -9,7 +9,7 @@ import curso.contantes.StatusAlunos;
 import superclasse.Pessoa;
 
 /* Classe/objeto que representa o Aluno */
-public class Aluno extends Pessoa{
+public class Aluno extends Pessoa {
 
 	/* Atributos da variável */
 	private String dataMatricula;
@@ -24,80 +24,6 @@ public class Aluno extends Pessoa{
 
 	public List<Disciplina> getDisciplinas() {
 		return disciplinas;
-	}
-
-	public Aluno() { /* Cria dados na memória. Já é padrão do Java */
-
-	}
-
-	public Aluno(String nomePadrao) {
-		super.nome = nomePadrao;//o super. é opcional, mas é bom para identificar que está vindo da superclasse
-	}
-
-	public Aluno(String nomePadrao, int idadePadrao) {
-		nome = nomePadrao;
-		idade = idadePadrao;
-	}
-
-	/* Métodos SETTER e GETTERS */
-	/* SET é para adicionar ou receber dados para os atributos */
-	/* GET resgatar ou obter o valor do atributo */
-
-	/* Recebe dados */
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public int getIdade() {
-		return idade;
-	}
-
-	public void setIdade(int idade) {
-		this.idade = idade;
-	}
-
-	public String getDataNascimento() {
-		return dataNascimento;
-	}
-
-	public void setDataNascimento(String dataNascimento) {
-		this.dataNascimento = dataNascimento;
-	}
-
-	public String getRegistroGeral() {
-		return registroGeral;
-	}
-
-	public void setRegistroGeral(String registroGeral) {
-		this.registroGeral = registroGeral;
-	}
-
-	public String getNumeroCpf() {
-		return numeroCpf;
-	}
-
-	public void setNumeroCpf(String numeroCpf) {
-		this.numeroCpf = numeroCpf;
-	}
-
-	public String getNomeMae() {
-		return nomeMae;
-	}
-
-	public void setNomeMae(String nomeMae) {
-		this.nomeMae = nomeMae;
-	}
-
-	public String getNomePai() {
-		return nomePai;
-	}
-
-	public void setNomePai(String nomePai) {
-		this.nomePai = nomePai;
 	}
 
 	public String getDataMatricula() {
@@ -163,12 +89,11 @@ public class Aluno extends Pessoa{
 			return StatusAlunos.REPROVADO;
 		}
 	}
-	
-	public boolean substitucaoAluno (List<Aluno> alunos) {
-		
+
+	public boolean substitucaoAluno(List<Aluno> alunos) {
+
 		String substitua = JOptionPane.showInputDialog("Qual aluno trocar?");
-		
-		
+
 		int index = 0;
 		boolean found = false;
 		for (Aluno aluno : alunos) {
@@ -178,23 +103,23 @@ public class Aluno extends Pessoa{
 				String novaNota = JOptionPane.showInputDialog("Qual nota?");
 				found = true;
 				aluno.setNome(novoAluno);
-				
+
 				Disciplina disciplina = new Disciplina();
 				disciplina.setDisciplina(novaDisc);
 				disciplina.setNota(Double.valueOf(novaNota));
-				
+
 				aluno.getDisciplinas().add(disciplina);
-				
+
 				alunos.set(index, aluno);
-				
-				System.out.println("O nome do aluno é: " + aluno.getNome());					
+
+				System.out.println("O nome do aluno é: " + aluno.getNome());
 				System.out.println("A média do aluno foi: " + aluno.getMediaNota());
 				System.out.println("Resultado = " + aluno.getAlunoAprovado2());
-			}					
-			
+			}
+
 			index++;
-		} 
-		
+		}
+
 		return found;
 	}
 
@@ -236,5 +161,18 @@ public class Aluno extends Pessoa{
 			return false;
 		return true;
 	}
-
+	@Override /* Identifica método sobreescrito - um método que já existe na superclasse - só sobreescreve*/
+	public boolean pessoaMaiorIdade() {
+	
+	return idade >= 21; //Pode alterar o método
+	}
+	
+	public String msgMaiorIdade () {
+		return this.pessoaMaiorIdade() ? " - O aluno é maior de idade!" : " - Eita!! Menor de Idade!!!";
+	}
+	@Override
+	public double salario() {
+		
+		return 1000;
+	}
 }
