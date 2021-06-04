@@ -8,20 +8,21 @@ import javax.swing.JOptionPane;
 
 import curso.contantes.StatusAlunos;
 import curso.interfaces.PermitirAcesso;
+import funcoes.heranca.FuncaoAutenticacao;
 import subclasses.Aluno;
 import subclasses.Disciplina;
 import subclasses.Secretario;
 
-public class Validacao2 {
+public class Autenticacao {
 
 	public static void main(String[] args) {
 
 		String login = JOptionPane.showInputDialog("Informe o seu usuário");
 		String senha = JOptionPane.showInputDialog("Informe a sua senha");
 
-		PermitirAcesso permitirAcesso = new Secretario(login, senha);// Recebe o construtor com parâmetro! Se tirar os parâmetros chama o construtor padrão
-//Travar o contrato para autorizar somente quem tem o contrato 100% legítimo
-		if (permitirAcesso.autenticar()) {//Se usar os parâmetros aqui chama o método acima - classe secretário
+		
+		PermitirAcesso permitirAcesso = new Secretario(login, senha);
+		if (new FuncaoAutenticacao(permitirAcesso).funcaoAutenticar()) {
 
 			List<Aluno> alunos = new ArrayList<Aluno>();
 			HashMap<String, List<Aluno>> maps = new HashMap<String, List<Aluno>>();

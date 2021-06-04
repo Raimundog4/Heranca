@@ -12,6 +12,14 @@ public class Secretario extends Pessoa implements PermitirAcesso {
 	private String login;
 
 	private String senha;
+	
+	public Secretario (String login, String senha) {//Construtor com parâmetros
+		this.login = login; //login da classe é igual ao login do parâmetro do método
+		this.senha = senha;
+	}
+	public Secretario() {//Construtor padrão - sem esse os objetos darão erro
+
+	}
 
 	public String getRegistro() {
 		return registro;
@@ -104,8 +112,16 @@ public class Secretario extends Pessoa implements PermitirAcesso {
 	}
 
 	@Override
-	public boolean autenticar() {
+	public boolean autenticar(String login, String senha) {//Variáveis criadas no próprio método
+		this.login = login;
+		this.senha = senha;
+		return autenticar();
+	}
+	@Override
+	public boolean autenticar() {//Pega a variável da própria classe
 
 		return login.equals("admin") && senha.equals("admin123");//Retorna true caso login e senha sejam iguais else false
 	}
+
+	
 }

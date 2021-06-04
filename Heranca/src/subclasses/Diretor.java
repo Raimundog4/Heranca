@@ -1,12 +1,25 @@
 package subclasses;
 
+import curso.interfaces.PermitirAcesso;
 import superclasse.Pessoa;
 
-public class Diretor extends Pessoa {
+public class Diretor extends Pessoa implements PermitirAcesso {
 
 	private String registroEducacao;
 	private int tempoDirecao;
 	private String titulacao;
+
+	private String login;
+	private String senha;
+
+	public Diretor(String login, String senha) {
+		this.login = login;
+		this.senha = senha;
+	}
+
+	public Diretor() {
+
+	}
 
 	public String getRegistroEducacao() {
 		return registroEducacao;
@@ -76,9 +89,21 @@ public class Diretor extends Pessoa {
 
 	@Override
 	public double salario() {
-		
-		return 7500 * 0.7;//Define o valor na classe filha
+
+		return 7500 * 0.7;// Define o valor na classe filha
 	}
 
-	
+	@Override
+	public boolean autenticar(String login, String senha) {
+		this.login = login;
+		this.senha = senha;
+		return autenticar();
+	}
+
+	@Override
+	public boolean autenticar() {
+
+		return login.equals("admin") && senha.equals("admin") ;
+	}
+
 }
