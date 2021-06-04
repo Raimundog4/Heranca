@@ -7,6 +7,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import curso.contantes.StatusAlunos;
+import curso.interfaces.PermitirAcesso;
 import subclasses.Aluno;
 import subclasses.Disciplina;
 import subclasses.Secretario;
@@ -15,14 +16,15 @@ public class Validacao {
 
 	public static void main(String[] args) {
 
-		String usuario = JOptionPane.showInputDialog("Informe o seu usuário");
+		String login = JOptionPane.showInputDialog("Informe o seu usuário");
 		String senha = JOptionPane.showInputDialog("Informe a sua senha");
 //Modo simples
-		Secretario secretario = new Secretario(); /* Trabalha diretamente com o objeto */
-		secretario.setLogin(usuario);
-		secretario.setSenha(senha);
+//		Secretario secretario = new Secretario(); /* Trabalha diretamente com o objeto */
 
-		if (secretario.autenticar()) {
+//		if (new Secretario().autenticar(login, senha)) {//Para diminuir o código. Não precisa do PermitirAcesso secretario = new Secretario();
+		
+		PermitirAcesso secretario = new Secretario();//Método mais robusto
+		if (secretario.autenticar(login, senha)) {
 
 			List<Aluno> alunos = new ArrayList<Aluno>();
 			HashMap<String, List<Aluno>> maps = new HashMap<String, List<Aluno>>();
