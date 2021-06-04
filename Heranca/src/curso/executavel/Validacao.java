@@ -17,7 +17,7 @@ public class Validacao {
 
 		String usuario = JOptionPane.showInputDialog("Informe o seu usuário");
 		String senha = JOptionPane.showInputDialog("Informe a sua senha");
-
+//Modo simples
 		Secretario secretario = new Secretario(); /* Trabalha diretamente com o objeto */
 		secretario.setLogin(usuario);
 		secretario.setSenha(senha);
