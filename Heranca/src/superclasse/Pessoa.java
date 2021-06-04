@@ -1,5 +1,6 @@
 package superclasse;
 
+//Polimorfismo é quando métodos estão numa superclasse abstrata e que podem ser acessados pelas subclasses
 //Classe pai ou superclasse ou classe base - (Atributos comuns a todos os objetos filhos)
 public abstract class Pessoa { // Classe abstrata - o abstract impede que Pessoa seja instanciada
 
@@ -11,9 +12,10 @@ public abstract class Pessoa { // Classe abstrata - o abstract impede que Pessoa
 	protected String nomeMae;
 	protected String nomePai;
 
-	//Método abstrato fica na classe pai e é obrigatório para as classes filhas - se não executar não compila
-	public abstract double salario ();  // O valor não é definido - esse método obriga a classe filha a implementá-lo
-	
+	// Método abstrato fica na classe pai e é obrigatório para as classes filhas -
+	// se não executar não compila
+	public abstract double salario(); // O valor não é definido - esse método obriga a classe filha a implementá-lo
+
 	public String getNome() {
 		return nome;
 	}
